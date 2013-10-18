@@ -1,0 +1,1 @@
+<% response.sendRedirect("send-email.html"); %>

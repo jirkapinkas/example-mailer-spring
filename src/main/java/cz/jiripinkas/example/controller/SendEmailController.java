@@ -48,7 +48,7 @@ public class SendEmailController {
 		String[] tos = to.split("\n");
 		List<Email> emails = new ArrayList<Email>();
 		for (String emailTo : tos) {
-			Email email = new Email(emailTo);
+			Email email = new Email(emailTo.trim());
 			emails.add(email);
 		}
 		emailBatch = emailBatchService.save(emailBatch, emails);

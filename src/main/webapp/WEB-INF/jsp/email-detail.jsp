@@ -26,7 +26,20 @@
 		<c:forEach items="${emailBatch.toEmails}" var="email">
 			<tr>
 				<td>${email.to}</td>
-				<td>${email.sent}</td>
+				<td><c:choose>
+						<c:when test="${email.sent and email.result}">
+							<img alt="sent" title="sent"
+								src="<c:url value="/resources/img/email-sent.png" />">
+						</c:when>
+						<c:when test="${email.sent and not email.result}">
+							<img alt="error" title="error"
+								src="<c:url value="/resources/img/email-error.png" />">
+						</c:when>
+						<c:otherwise>
+							<img alt="sending" title="sending"
+								src="<c:url value="/resources/img/email-sending.png" />">
+						</c:otherwise>
+					</c:choose></td>
 			</tr>
 		</c:forEach>
 	</tbody>

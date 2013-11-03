@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 @Entity
 public class Email {
 
@@ -21,6 +24,8 @@ public class Email {
 
 	private boolean sent;
 
+	private boolean result;
+
 	@ManyToOne
 	@JoinColumn(name = "email_batch_id")
 	private EmailBatch emailBatch;
@@ -31,6 +36,14 @@ public class Email {
 
 	public Email(String to) {
 		this.to = to;
+	}
+
+	public void setResult(boolean result) {
+		this.result = result;
+	}
+
+	public boolean isResult() {
+		return result;
 	}
 
 	public void setSent(boolean sent) {

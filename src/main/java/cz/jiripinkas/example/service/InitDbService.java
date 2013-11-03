@@ -37,7 +37,10 @@ public class InitDbService {
 			emailBatch.setSubject("hello");
 			emailBatch.setBody("yo, wassup?");
 			List<Email> emails = new ArrayList<Email>();
-			emails.add(new Email("to1@email.com"));
+			Email email = new Email("to1@email.com");
+			email.setSent(true);
+			email.setResult(true);
+			emails.add(email);
 			emailBatch = emailBatchService.save(emailBatch, emails);
 			emailBatch = emailBatchService.findOne(emailBatch.getEmailBatchId());
 		}
@@ -47,7 +50,10 @@ public class InitDbService {
 			emailBatch.setSubject("hello again");
 			emailBatch.setBody("yo, wassup?");
 			List<Email> emails = new ArrayList<Email>();
-			emails.add(new Email("to2@email.com"));
+			Email email = new Email("to2@email.com");
+			email.setSent(true);
+			email.setResult(true);
+			emails.add(email);
 			emailBatch = emailBatchService.save(emailBatch, emails);
 			emailBatch = emailBatchService.findOne(emailBatch.getEmailBatchId());
 		}
@@ -57,7 +63,10 @@ public class InitDbService {
 			emailBatch.setSubject("hello yet again");
 			emailBatch.setBody("yo, wassup?");
 			List<Email> emails = new ArrayList<Email>();
-			emails.add(new Email("to2@email.com"));
+			Email email = new Email("to3@email.com");
+			email.setSent(true);
+			email.setResult(true);
+			emails.add(email);
 			emailBatch = emailBatchService.save(emailBatch, emails);
 			emailBatch = emailBatchService.findOne(emailBatch.getEmailBatchId());
 		}

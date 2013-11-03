@@ -6,7 +6,7 @@
 
 	<annotation-driven executor="myExecutor" scheduler="myScheduler" />
 
-	<executor id="myExecutor" />
+	<executor id="myExecutor" pool-size="2" />
 
 	<scheduler id="myScheduler" />
 

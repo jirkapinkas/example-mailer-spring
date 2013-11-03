@@ -19,15 +19,26 @@ public class Email {
 	@Column(name = "email_to")
 	private String to;
 
+	private boolean sent;
+
 	@ManyToOne
 	@JoinColumn(name = "email_batch_id")
 	private EmailBatch emailBatch;
 
 	public Email() {
+
 	}
 
 	public Email(String to) {
 		this.to = to;
+	}
+
+	public void setSent(boolean sent) {
+		this.sent = sent;
+	}
+
+	public boolean isSent() {
+		return sent;
 	}
 
 	public Integer getEmailId() {

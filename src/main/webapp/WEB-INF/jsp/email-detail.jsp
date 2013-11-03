@@ -14,12 +14,22 @@
 <strong>body:</strong>
 <p>${emailBatch.body}</p>
 
+<h2>sent to these emails:</h2>
 <table class="table table-striped table-bordered table-hover">
-	<c:forEach items="${emailBatch.toEmails}" var="email">
+	<thead>
 		<tr>
-			<td>${email.to}</td>
+			<th>email</th>
+			<th>sent</th>
 		</tr>
-	</c:forEach>
+	</thead>
+	<tbody>
+		<c:forEach items="${emailBatch.toEmails}" var="email">
+			<tr>
+				<td>${email.to}</td>
+				<td>${email.sent}</td>
+			</tr>
+		</c:forEach>
+	</tbody>
 </table>
 
 <jsp:include page="layout/footer.jsp" />

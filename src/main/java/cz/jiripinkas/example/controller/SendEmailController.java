@@ -24,7 +24,7 @@ public class SendEmailController {
 
 	@Autowired
 	private EmailBatchService emailBatchService;
-	
+
 	@Autowired
 	private SendEmailService sendEmailService;
 
@@ -41,9 +41,7 @@ public class SendEmailController {
 	}
 
 	@RequestMapping(value = "/send-email", method = RequestMethod.POST)
-	public String sendEmail(@Valid @ModelAttribute EmailBatch emailBatch,
-			BindingResult bindingResult, @RequestParam String to)
-			throws MessagingException {
+	public String sendEmail(@Valid @ModelAttribute EmailBatch emailBatch, BindingResult bindingResult, @RequestParam String to) throws MessagingException {
 		if (bindingResult.hasErrors()) {
 			return index();
 		}
@@ -53,9 +51,9 @@ public class SendEmailController {
 			Email email = new Email(emailTo);
 			emails.add(email);
 		}
-		emailBatchService.save(emailBatch, emails);
+		emailBatch = emailBatchService.save(emailBatch, emails);
 
-		sendEmailService.sendEmail(null, null, null, null);
+		emailBatchService.sendEmails(emailBatch.getEmailBatchId());
 
 		return "redirect:/send-email.html?sent=true";
 	}

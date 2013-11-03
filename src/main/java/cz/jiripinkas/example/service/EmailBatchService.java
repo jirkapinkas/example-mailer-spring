@@ -21,6 +21,9 @@ public class EmailBatchService {
 	@Autowired
 	private EmailRepository emailRepository;
 
+	@Autowired
+	private SendEmailService sendEmailService;
+
 	public EmailBatch save(EmailBatch emailBatch, List<Email> emails) {
 		emailBatch = emailBatchRepository.save(emailBatch);
 		for (Email email : emails) {
@@ -40,5 +43,13 @@ public class EmailBatchService {
 
 	public void delete(int id) {
 		emailBatchRepository.delete(id);
+	}
+
+	public void sendEmails(int emailBatchId) {
+		EmailBatch emailBatch = emailBatchRepository.findOne(emailBatchId);
+		List<Email> emails = emailBatch.getToEmails();
+		for (Email email : emails) {
+			sendEmailService.sendEmail(emailBatch, email);
+		}
 	}
 }

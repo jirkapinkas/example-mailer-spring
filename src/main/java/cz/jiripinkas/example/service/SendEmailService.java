@@ -88,8 +88,11 @@ public class SendEmailService {
 			}
 			logger.info("finish sending email to: " + to);
 			email.setResult(true);
-		} catch (Exception ex) {
-			// catch all exceptions
+		} catch (RuntimeException ex) {
+			// This method MUST NOT return
+			// RuntimeException, because 
+			// otherwise the transaction would be
+			// rolled back.
 		} finally {
 			email.setSent(true);
 			emailRepository.save(email);

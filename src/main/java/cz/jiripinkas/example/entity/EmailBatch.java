@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -22,14 +23,15 @@ public class EmailBatch {
 	@Column(name = "email_from")
 	private String from;
 
-	@Size(min = 1, message="Subject must not be empty!")
+	@Size(min = 1, message = "Subject must not be empty!")
 	@Column(name = "email_subject")
 	private String subject;
 
-	@Size(min = 1, message="Body must not be empty!")
+	@Size(min = 1, message = "Body must not be empty!")
 	@Column(name = "email_body")
 	private String body;
 
+	@OrderBy("emailId")
 	@OneToMany(mappedBy = "emailBatch", cascade = CascadeType.ALL)
 	private List<Email> toEmails;
 

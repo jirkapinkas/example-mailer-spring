@@ -49,7 +49,7 @@
 			<tr>
 				<td>${email.to}</td>
 				<td>
-					<div class="email_${email.emailId}">${email.sent}</div>
+					<div class="email_${email.emailId}"></div>
 				</td>
 			</tr>
 		</c:forEach>
